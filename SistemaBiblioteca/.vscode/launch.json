@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Sistema Biblioteca",
+      "request": "launch",
+      "mainClass": "com.biblioteca.app.App",
+      "projectName": "SistemaBiblioteca",
+      "console": "integratedTerminal",
+      "vmArgs": "-Dfile.encoding=UTF-8 -Dstdout.encoding=UTF-8"
+    }
+  ]
+}

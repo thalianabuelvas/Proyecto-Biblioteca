@@ -1,0 +1,116 @@
+@startuml
+
+skinparam classBackgroundColor #1e1e2e
+skinparam classBorderColor #89b4fa
+skinparam classArrowColor #cba6f7
+skinparam classFontColor #cdd6f4
+skinparam classAttributeFontColor #a6e3a1
+skinparam backgroundColor #181825
+
+abstract class Personal {
+  - nombre: String
+  - id: String
+  - area: String
+  + Personal(nombre, id, area)
+  + getNombre(): String
+  + getId(): String
+  + getArea(): String
+  + {abstract} generarReporte(): String
+}
+
+class Bibliotecario {
+  - prestamos: ArrayList<Prestamo>
+  + Bibliotecario(nombre, id, area)
+  + registrarPrestamo(fecha: String, lector: String, recurso: Recurso): void
+  + registrarPrestamo(fecha: String, lector: String, observacion: String, recurso: Recurso): void
+  + generarReporte(): String
+  + getPrestamos(): ArrayList<Prestamo>
+}
+
+class Auxiliar {
+  - turno: String
+  + Auxiliar(nombre, id, area, turno)
+  + generarReporte(): String
+}
+
+abstract class Recurso {
+  - titulo: String
+  - codigo: String
+  - anio: int
+  + Recurso(titulo, codigo, anio)
+  + getTitulo(): String
+  + getCodigo(): String
+  + getAnio(): int
+  + {abstract} obtenerInfo(): String
+}
+
+class Libro {
+  - autor: String
+  - paginas: int
+  + Libro(titulo, codigo, anio, autor, paginas)
+  + obtenerInfo(): String
+}
+
+class RecursoDigital {
+  - formato: String
+  - tamanoMB: int
+  + RecursoDigital(titulo, codigo, anio, formato, tamanoMB)
+  + obtenerInfo(): String
+  + getTamanoMB(): int
+}
+
+class Prestamo {
+  - fecha: String
+  - observacion: String
+  - lector: String
+  - recurso: Recurso
+  - bibliotecario: Bibliotecario
+  + Prestamo(fecha, observacion, lector, recurso, bibliotecario)
+  + getInfo(): String
+}
+
+class Seccion {
+  - nombre: String
+  - capacidad: int
+  - recursos: ArrayList<Recurso>
+  + Seccion(nombre, capacidad)
+  + agregarRecurso(r: Recurso): void
+  + retirarRecurso(codigo: String): void
+  + buscarRecurso(codigo: String): Recurso
+  + listarRecursos(): void
+  + getNombre(): String
+  + getCapacidad(): int
+  + getRecursos(): ArrayList<Recurso>
+}
+
+class Biblioteca {
+  - nombre: String
+  - secciones: ArrayList<Seccion>
+  - personal: ArrayList<Personal>
+  + Biblioteca(nombre)
+  + agregarSeccion(nombre: String, capacidad: int): void
+  + agregarPersonal(p: Personal): void
+  + buscarSeccion(nombre: String): Seccion
+  + buscarRecurso(codigo: String): Recurso
+  + buscarBibliotecario(id: String): Bibliotecario
+  + listarBibliotecarios(): void
+  + generarReporteGeneral(): void
+  + getSecciones(): ArrayList<Seccion>
+  + getPersonal(): ArrayList<Personal>
+}
+
+Personal <|-- Bibliotecario
+Personal <|-- Auxiliar
+Recurso <|-- Libro
+Recurso <|-- RecursoDigital
+Biblioteca *-- Seccion
+Seccion o-- Recurso
+Bibliotecario --> Prestamo
+Prestamo --> Recurso
+Prestamo --> Bibliotecario
+
+note bottom of RecursoDigital : <<final>>
+note bottom of Biblioteca : Composicion con Seccion
+note right of Seccion : Agregacion con Recurso
+
+@enduml
