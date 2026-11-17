@@ -176,7 +176,7 @@ public class App {
                 }
                 case 6: { // Ver préstamos de un bibliotecario
                     String id = leerTexto(sc, "ID del bibliotecario: ");
-                    try {
+                    try { // ejecuta el codigo hasta el break y vigila los errores.
                         Bibliotecario bib = biblioteca.buscarBibliotecario(id);
                         if (bib.getPrestamos().isEmpty()) {
                             System.out.println("Este bibliotecario no tiene préstamos.");
@@ -185,7 +185,7 @@ public class App {
                                 System.out.println(p.getInfo());
                             }
                         }
-                    } catch (PersonalNoEncontradoException e) {
+                    } catch (PersonalNoEncontradoException e) { //captura y maneja erroressss
                         System.out.println("Error: " + e.getMessage());
                     }
                     break;

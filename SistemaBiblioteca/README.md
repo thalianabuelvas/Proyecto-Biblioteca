@@ -1,3 +1,9 @@
+# Presentado por:
+- Thaliana Buelvas
+- Carolayn Reina 
+- Laura Franco
+
+
 # Sistema de Gestión de Biblioteca Universitaria
 
 Proyecto final de Programación Orientada a Objetos (Java, menú por consola).

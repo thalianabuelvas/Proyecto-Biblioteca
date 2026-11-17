@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "com.biblioteca.app.App",
+      "projectName": "SistemaBiblioteca_fe8ac9e0"
+    },
+    {
+      "type": "java",
       "name": "Sistema Biblioteca",
       "request": "launch",
       "mainClass": "com.biblioteca.app.App",
