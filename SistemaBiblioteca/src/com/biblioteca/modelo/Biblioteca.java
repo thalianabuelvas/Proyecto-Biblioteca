@@ -1,4 +1,7 @@
 package com.biblioteca.modelo;
+//com -> Dominio intervido usado como ruta de acceso.
+//biblioteca -> nombre del proyecto
+//modelo -> paquete donde se encuentra las clases del modelo
 
 import java.util.ArrayList;
 
@@ -19,11 +22,13 @@ public class Biblioteca {
         this.secciones = new ArrayList<>();
         this.personal = new ArrayList<>();
         // Secciones iniciales (creadas internamente: composición)
+        //Aqui se crean las secciones
         secciones.add(new Seccion("Referencia", 10));
         secciones.add(new Seccion("Literatura", 8));
         secciones.add(new Seccion("Ciencias", 6));
     }
 
+    //Aqui se agregan la nuevas secciones.
     public void agregarSeccion(String nombre, int capacidad) {
         Seccion s = new Seccion(nombre, capacidad); // puede lanzar IllegalArgumentException
         secciones.add(s);
@@ -36,7 +41,7 @@ public class Biblioteca {
     }
 
     public Seccion buscarSeccion(String nombre) {
-        for (Seccion s : secciones) {
+        for (Seccion s : secciones) {//inicia el ciclo, seccion de tipo de datos de los elentos, s variable que respresenta cada elemento, secciones colecciones que contiene los objetos Seccion.
             if (s.getNombre().equalsIgnoreCase(nombre)) {
                 return s;
             }
@@ -55,9 +60,10 @@ public class Biblioteca {
         throw new RecursoNoEncontradoException(codigo);
     }
 
+    //Asi como se puede devolver un string, tambien se puede devolver objetos completos de otras clases.
     public Bibliotecario buscarBibliotecario(String id) throws PersonalNoEncontradoException {
         for (Personal p : personal) {
-            if (p instanceof Bibliotecario && p.getId().equals(id)) {
+            if (p instanceof Bibliotecario && p.getId().equals(id)) { //El equals compara los ID.
                 return (Bibliotecario) p;
             }
         }
@@ -67,7 +73,7 @@ public class Biblioteca {
     public void listarBibliotecarios() {
         System.out.println("--- Bibliotecarios ---");
         for (Personal p : personal) {
-            if (p instanceof Bibliotecario) {
+            if (p instanceof Bibliotecario) { //instanceof comprueba si un objeto es una intancia de una clase especifica.
                 System.out.println(p.getId() + " - " + p.getNombre() + " (" + p.getArea() + ")");
             }
         }

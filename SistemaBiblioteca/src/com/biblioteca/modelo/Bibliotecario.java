@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.biblioteca.excepciones.PrestamoInvalidoException;
 
+//Corresponde a una clase concreta que hereda otra clase. (Herencia)
 public class Bibliotecario extends Personal {
     private ArrayList<Prestamo> prestamos;
 

@@ -4,7 +4,7 @@ public class Prestamo {
     private String fecha;
     private String observacion;
     private String lector;
-    private Recurso recurso;
+    private Recurso recurso; //Asociacion
     private Bibliotecario bibliotecario;
 
     public Prestamo(String fecha, String observacion, String lector,

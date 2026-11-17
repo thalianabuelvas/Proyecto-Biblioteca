@@ -14,3 +14,5 @@ public class Auxiliar extends Personal {
                 + "\nÁrea: " + getArea() + "\nTurno: " + turno;
     }
 }
+
+//Hereda de personal.
